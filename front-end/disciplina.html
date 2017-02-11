@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt" ng-app="SistemaAcademico">
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro Disciplina</title>		
+</head>
+<body ng-controller="DisciplinaController">
+	
+	<form name="formDisciplinas">
+	<label>Código</label>
+	<input type="text" name="codigo" ng-model="disciplina.codigo">
+
+	<label>Nome</label>
+	<input type="text" name="nome" ng-model="disciplina.nome">	
+
+	<button ng-click="gravar()">Gravar</button>
+	</form>
+
+	 <table ng-hide="listaDisciplinas.length == 0">
+		<thead>
+			<tr>				
+				<th>Código</th>	
+				<th>Nome</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="disciplina in listaDisciplinas">			
+				<td>					
+					<input type="text" readonly="true" size="5" ng-model="disciplina.codigo">
+				</td>	
+				<td>
+					<input type="text" readonly="true" size="30" ng-model="disciplina.nome" >
+				</td>
+				<td>					
+					<button ng-click="remover(disciplina)">Remover</button>					
+				</td>
+			</tr>
+		</tbody>
+	</table> 
+	
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<script src="js/main.js"></script>
+	<script src="js/DisciplinaController.js"></script>	
+	
+</body>
+
+
+</html>
+
