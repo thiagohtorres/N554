@@ -10,7 +10,8 @@ app.controller('DisciplinaController',function($scope)
 	}
 
 	$scope.remover = function(disciplina)	{
-		$scope.listaDisciplinas.splicer($scope.listaDisciplinas.indexOf(disciplinas),1);
+
+		$scope.listaDisciplinas.splice($scope.listaDisciplinas.indexOf(disciplina),1);
 
 
 	}
