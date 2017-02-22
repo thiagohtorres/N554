@@ -1,29 +1,43 @@
 <!doctype html>
-<html lang="pt">
+<html lang="pt" ng-app="SistemaAcademico">
 <head>
 	<meta charset="UTF-8">
 	<title>Cadastro Turma</title>		
 </head>
-<body>
-	
+<body ng-controller="TurmaController">
+
+
+	<div class="container">
+
+	<div class="row">
+
+	<div class="col-md-4">
+
+	<div class="form-group">
 	
 	<label>Semestre</label>
-	<select name="semestre">  			
-		<option value="2016.1">2016.1</option>
-		<option value="2016.2">2016.2</option>
-		<option value="2017.1">2017.1</option>
+	<select name="semestre" ng-model="turma.semestre" class="form-control">  			
+		<option ng-repeat="semestre in listaSemestres" value="{{semestre.valor}}">{{semestre.valor}}</option>		
 	</select>
+	</div>
 
-	<label>Disciplina</label>			
-  	<select name="disciplina">  			
-	    <option value="001">001 - Tec. Internet I</option>
-	    <option value="001">002 - Redes I</option>
-	    <option value="001">003 - Arquitetura de Software</option>	
-	</select>	
+	<div class="form-group">
 
-	<button>Gravar</button>
+	<label>Disciplina</label>
+  	<select name="disciplina" ng-model="turma.disciplina" class="form-control">  			
+	    <option ng-repeat="disciplina in listaDisciplinas" value="{{disciplina.nome}}">{{disciplina.codigo}}-{{disciplina.nome}}</option>
+	    	
+	</select>
+	</div>	
 
-	 <table>
+	<button ng-click="gravar()" class="btn btn-primary">Gravar</button>
+	</div>
+
+	<div class="col-md-1"></div>
+
+	<div class="col-md-4">
+
+	 <table ng-hide="listaTurmas.length == 0" class="table table-condensed">
 		<thead>
 			<tr>				
 				<th>Semestre</th>	
@@ -31,20 +45,31 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>			
+			<tr ng-repeat="turma in listaTurmas">			
 				<td>					
-					<input type="text" size="5" >
+					{{turma.semestre}}
 				</td>	
 				<td>
-					<input type="text" size="30" >
+					{{turma.disciplina}}
 				</td>
 				<td>					
-					<button>Remover</button>					
+					<button ng-click="remover(turma)" class="btn btn-danger"->
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>
+										
 				</td>
 			</tr>
 		</tbody>
-	</table> 	
+	</table>
+	</div>
+	</div> 
+	</div>	
 	
 </body>
+
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="js/main.js"></script>
+<script src="js/TurmaController.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
 </html>
