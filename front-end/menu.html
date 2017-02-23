@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt" ng-app="SistemaAcademico">
+<head>
+<meta charset="UTF-8">
+<title>Sistema Acadêmico</title>
+
+<!--Imports externos: angular, bootstrap e jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
+
+<!--Imports internos: main e controllers -->
+<script src="js/main.js"></script>
+<script src="js/TurmaController.js"></script>
+<script src="js/DisciplinaController.js"></script>
+<script src="js/AlunoController.js"></script>
+
+
+</head>
+
+
+<body>
+<div class="bs-example">
+    <nav id="myNavbar" class="navbar navbar-default" role="navigation">     
+        <div class="container">                  
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" >
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" class="dropdown-toggle">Turma <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/cadastro_turma">Cadastro</a></li>
+                            <li><a href="#/">Busca</a></li>                                                      
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="" data-toggle="dropdown" class="dropdown-toggle">Aluno <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#/cadastro_aluno">Cadastro</a></li>
+                            <li><a href="">Busca</a></li>                                                      
+                        </ul>
+                    </li>
+                    <li><a href="#/cadastro_disciplina">Disciplina</a></li>                    
+                    
+                </ul>                
+            </div>
+        </div>
+    </nav>
+    
+    <div ng-view></div>
+</div>
+
+</body>
+</html> 
