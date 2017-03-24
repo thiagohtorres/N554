@@ -51,6 +51,7 @@ app.controller('AlunoController',function($scope,$http){
 	}
 
 	$scope.alterar = function(){
+		$scope.aluno.turma = JSON.parse($scope.aluno.turma);
 		$http.put('http://localhost:8080/ExemploRest/rest/alunos', $scope.aluno).success(
 			function(dados){
 				$scope.aluno = {};
@@ -64,7 +65,7 @@ app.controller('AlunoController',function($scope,$http){
 	$scope.buscar = function(aluno){
 		$http.get('http://localhost:8080/ExemploRest/rest/alunos/'+aluno.id).success(
 			function(dados){
-				$scope.alunos = dados;
+				$scope.aluno = dados;
 
 			}
 
