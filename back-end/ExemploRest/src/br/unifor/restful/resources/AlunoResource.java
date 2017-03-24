@@ -48,7 +48,7 @@ public class AlunoResource {
 		
 		alunosMap.put(aluno.getId().intValue(), aluno);		
 		
-		return "Disciplina " + aluno.getNome() + " alterada.";
+		return "Aluno " + aluno.getNome() + " alterada.";
 		
 	}
 	
