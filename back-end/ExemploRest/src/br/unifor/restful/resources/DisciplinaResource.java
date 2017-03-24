@@ -66,6 +66,28 @@ public class DisciplinaResource {
 		return "Disciplina " + disciplina.getNome() + " adicionada.";
 	}
 	
+	@PUT
+	@Consumes("application/json")
+	@Produces("text/plain")
+	public String alterar(Disciplina disciplina) {
+		
+		disciplinasMap.put(disciplina.getId().intValue(), disciplina);		
+		
+		return "Disciplina " + disciplina.getNome() + " alterada.";
+		
+	}
+
+	@Path("{id}")
+	@DELETE
+	@Produces("text/plain")
+	public String remove(@PathParam("id") Long id) {
+		
+		Disciplina disciplina = disciplinasMap.remove(id.intValue());		
+		return "Disciplina " + disciplina.getNome() + " removida.";
+		
+	}
+
+	
 	
 
 
