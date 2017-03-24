@@ -29,6 +29,7 @@
    </div>	
 
 	<button ng-click="gravar()" class="btn btn-primary">Gravar</button>
+	<button ng-click="alterar()" class="btn btn-default">Alterar</button>
 
 	</form>
 	</div>
@@ -56,6 +57,11 @@
 					<button ng-click="remover(disciplina)" class="btn btn-xs btn-danger">
 						<span class="glyphicon glyphicon-remove"></span>
 					</button>					
+				</td>
+				<td>
+					<button ng-click="busca(disciplina)" class="btn btn-xs btn-default">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</button>
 				</td>
 			</tr>
 		</tbody>

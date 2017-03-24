@@ -1,36 +1,112 @@
-app.controller('TurmaController', function($scope){
+app.controller('TurmaController', function($scope,$http){
 
 	$scope.listaTurmas = [];
+
+ $scope.turma = {}; 
+ $scope.turma.disciplina = {};
 
 $scope.listaSemestres = [  
   {valor: "2016.1"},
   {valor: "2016.2"},
-  {valor: "2017.1"}
+  {valor: "2017.1"},
+  {valor: "2017.2"},
+  {valor: "2018.1"},
+  {valor: "2018.2"}
 ];
 
 
-$scope.listaDisciplinas = [
 
-  {codigo:"T017", nome:"Arquitetura de Aplicações"},
-  {codigo:"T008", nome:"Redes I"},
-  {codigo:"T409", nome:"Prog. Web"}
-];
 
+$scope.listarDisciplina = function(){
+  $http.get('http://localhost:8080/ExemploRest/rest/disciplinas').success(
+    function(dados){
+      $scope.listaDisciplinas = dados;
+
+
+    }
+
+    );
+
+}
+
+$scope.listar = function(){
+  $http.get('http://localhost:8080/ExemploRest/rest/turmas').success(
+    function(dados){
+      $scope.listaTurmas = dados;
+
+    }
+
+
+    );
+}
 
 $scope.gravar = function(){
 
+  $scope.turma.disciplina = JSON.parse($scope.turma.disciplina);
 
-  $scope.listaTurmas.push($scope.turma);
-  $scope.turma = {};
+  $http.post('http://localhost:8080/ExemploRest/rest/turmas', $scope.turma).success(
+    function(dados){
+      $scope.turma = {};
+      $scope.listar();
+      alert(dados);
+
+    }
+
+    );
+  
 
 }
 
 $scope.remover = function(turma){
 	
-	$scope.listaTurmas.splice($scope.listaTurmas.indexOf(turma),1);
+	$http.delete('http://localhost:8080/ExemploRest/rest/turmas/'+turma.id).success(
+    function(dados){
+      $scope.listar();
+      alert(dados);
+    }
+
+
+
+
+    );
+
 
 
 
 }
+
+$scope.buscar = function(turma){
+
+  $http.get('http://localhost:8080/ExemploRest/rest/turmas/'+turma.id).success(
+
+    function(dados){
+      $scope.turma = dados;
+
+    }
+
+    );
+
+}
+
+$scope.alterar = function(){
+  $scope.turma.disciplina = JSON.parse($scope.turma.disciplina);
+
+  $http.put('http://localhost:8080/ExemploRest/rest/turmas',$scope.turma).success(
+
+      function(dados){
+        $scope.turma = {};
+        $scope.listar();
+        alert(dados);
+      }
+
+
+
+      );
+
+}
+
+$scope.listarDisciplina();
+
+$scope.listar();
 
 })

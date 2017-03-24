@@ -28,11 +28,12 @@
 <label>Turma</label>
 
 <select name="turma" ng-model="aluno.turma" class="form-control">
-	<option ng-repeat="turma in listaTurmas" value="{{turma.nome}}">{{turma.semestre}}-{{turma.codigo}}-{{turma.nome}}</option>
+	<option ng-repeat="turma in listaTurmas" value="{{turma}}">{{turma.semestre}}-{{turma.disciplina.nome}}</option>
 </select>
 </div>
 
 <button ng-click="gravar()" class="btn btn-primary">Gravar</button>
+<button ng-click="alterar()" class="btn btn-default">Alterar</button>
 </div>
 
 </form>
@@ -56,11 +57,16 @@
 			{{aluno.nome}}
 		</td>
 		<td>
-			{{aluno.turma}}
+			{{aluno.turma.semestre}}-{{aluno.turma.disciplina.nome}}
 		</td>
 		<td>
-			<button ng-click="remover(aluno)" class="btn btn-danger">
+			<button ng-click="remover(aluno)" class="btn btn-xs btn-danger">
 				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+		</td>
+		<td>
+			<button ng-click="buscar(aluno)" class="btn btn-xs btn-default">
+				<span class="glyphicon glyphicon-refresh"></span>
 			</button>
 		</td>
 			

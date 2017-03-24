@@ -1,29 +1,80 @@
-app.controller('AlunoController',function($scope){
+app.controller('AlunoController',function($scope,$http){
 
 	$scope.listaAlunos = [];
+	$scope.aluno = {};
+	$scope.aluno.turma = {};
 
-	$scope.listaTurmas = [
-       {semestre:"2016.1",codigo:"T017",nome:"Arquitetura de Aplicações"},
-       {semestre:"2016.2",codigo:"T008",nome:"Redes I"},
-       {semestre:"2017.1",codigo:"T409",nome:"Prog. Web"}
+	$scope.listarTurma = function(){
+		$http.get('http://localhost:8080/ExemploRest/rest/turmas').success(
+
+			function(dados){
+				$scope.listaTurmas = dados;
+
+			}
 
 
-	];
+			);
+	}
+
+	$scope.listar = function(){
+		$http.get('http://localhost:8080/ExemploRest/rest/alunos').success(
+			function(dados){
+				$scope.listaAlunos = dados;
+			}
+
+
+			);
+	}
 
 	$scope.gravar = function(){
+		$scope.aluno.turma = JSON.parse($scope.aluno.turma);
+		$http.post('http://localhost:8080/ExemploRest/rest/alunos', $scope.aluno).success(
+			function(dados){
+				$scope.aluno = {};
+				$scope.listar();
+				alert(dados);
+			}
 
-		$scope.listaAlunos.push($scope.aluno);
-		$scope.aluno = {};
+			);
 	}
 
 	$scope.remover = function(aluno){
-		var alu = $scope.listaAlunos.indexOf(aluno);
-		$scope.listaAlunos.splice(alu,1);
+		$http.delete('http://localhost:8080/ExemploRest/rest/alunos/'+aluno.id).success(
+			function(dados){
+				$scope.listar();
+				alert(dados);
+
+			}
+
+
+			);
+	}
+
+	$scope.alterar = function(){
+		$http.put('http://localhost:8080/ExemploRest/rest/alunos', $scope.aluno).success(
+			function(dados){
+				$scope.aluno = {};
+				$scope.listar();
+				alert(dados);
+			}
+
+			);
+	}
+
+	$scope.buscar = function(aluno){
+		$http.get('http://localhost:8080/ExemploRest/rest/alunos/'+aluno.id).success(
+			function(dados){
+				$scope.alunos = dados;
+
+			}
+
+			);
+
 	}
 
 
-
-
+	$scope.listarTurma();
+	$scope.listar();
 
 
 

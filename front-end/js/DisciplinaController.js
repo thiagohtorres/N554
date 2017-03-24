@@ -6,7 +6,17 @@ app.controller('DisciplinaController',function($scope, $http)
 
 	$scope.remover = function(disciplina)	{
 
-		$scope.listaDisciplinas.splice($scope.listaDisciplinas.indexOf(disciplina),1);
+		$http.delete('http://localhost:8080/ExemploRest/rest/disciplinas/'+disciplina.id).success(
+
+			function(dados){				
+				$scope.listar();
+				alert(dados);
+
+
+			}
+
+
+			);		
 
 
 	}
@@ -40,6 +50,37 @@ app.controller('DisciplinaController',function($scope, $http)
 			function(dados){
 				$scope.listaDisciplinas = dados;
 			}
+
+
+			);
+
+	}
+
+	$scope.busca = function(disciplina){
+
+		$http.get('http://localhost:8080/ExemploRest/rest/disciplinas/'+ disciplina.id).success(
+			function(dados){
+				$scope.disciplina = dados;
+			}
+
+			);
+
+
+	}
+
+	
+
+	$scope.alterar = function(){
+
+
+		$http.put('http://localhost:8080/ExemploRest/rest/disciplinas',$scope.disciplina).success(
+
+			function(dados){
+				$scope.disciplina = {};
+				$scope.listar();
+				alert(dados);
+			}
+
 
 
 			);
