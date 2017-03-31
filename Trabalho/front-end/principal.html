@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="pt" >
+<head>
+	<meta charset="UTF-8">
+	<title> LojaOnline </title>		
+</head>
+<body >
+<div class="container">
+
+  <div class="row">
+
+  <div class="col-md-4"></div>
+
+	<div class="col-md-4">
+	<form name="formBusca">
+		<label>Selecione por categoria</label>
+		<select  name="categoria" ng-model="produtoCategoria" class="form-control">  			
+		<option ng-repeat="categoria in listaCategorias" value="{{categoria.categoria}}">{{categoria.nome}}</option>		
+	</select>
+	
+
+
+	</form>
+		<table ng-hide="listaProdutos.length == 0" class="table table-condensed">
+		<thead>
+			<tr>				
+				<th>Código</th>	
+				<th>Nome</th>
+				<th>Valor</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="produto in listaProdutos | filter: produtoCategoria">			
+				<td>					
+					{{produto.codigo}}
+				</td>	
+				<td>
+					{{produto.nome}}
+				</td>
+				<td>
+					{{produto.valor}}
+				</td>
+				<td>					
+					<button ng-click="adicionar(produto)" class="btn btn-primary">
+						<span class="glyphicon glyphicon-download"> Carrinho</span>
+					</button>					
+				</td>								
+			</tr>
+		</tbody>
+	</table> 
+	</div>	
+
+	<div class="col-md-4"></div>
+
+	</div>
+
+	</div>
+	
+</body>
+
+
+    
+
+
+
+</html>
