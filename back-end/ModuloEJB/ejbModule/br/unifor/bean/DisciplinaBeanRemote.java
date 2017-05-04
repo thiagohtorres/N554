@@ -1,5 +1,7 @@
 package br.unifor.bean;
 
+
+
 import java.util.Collection;
 
 import javax.ejb.Remote;

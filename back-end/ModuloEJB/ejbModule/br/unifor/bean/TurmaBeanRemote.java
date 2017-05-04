@@ -1,9 +1,12 @@
 package br.unifor.bean;
 
+
+
 import java.util.Collection;
 
 import javax.ejb.Remote;
 
+import br.unifor.entity.Disciplina;
 import br.unifor.entity.Turma;
 
 @Remote

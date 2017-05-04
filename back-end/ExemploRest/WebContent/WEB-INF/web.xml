@@ -38,7 +38,7 @@
     <url-pattern>/rest/*</url-pattern>
 </servlet-mapping>
 
-<filter>
+    <filter>
        <filter-name>CORS</filter-name>
        <filter-class>
           com.thetransactioncompany.cors.CORSFilter
@@ -54,5 +54,5 @@
        <filter-name>CORS</filter-name>
        <url-pattern>/rest/*</url-pattern>
     </filter-mapping>
-
+  
 </web-app>

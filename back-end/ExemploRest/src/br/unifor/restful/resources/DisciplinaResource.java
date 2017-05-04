@@ -22,15 +22,17 @@ import br.unifor.entity.Disciplina;
 @Stateless
 @Path("/disciplinas")
 public class DisciplinaResource {
+
 	@EJB
 	private DisciplinaBeanRemote disciplinaBean;
-	
+
+
 	@GET
 	@Produces("application/json")
 	public Collection<Disciplina> lista() {
 		return this.disciplinaBean.lista();
 	}
-	
+
 	@Path("{id}")
 	@GET
 	@Produces("application/json")
@@ -38,36 +40,25 @@ public class DisciplinaResource {
 		return this.disciplinaBean.busca(id);
 	}
 	
-	@POST
+    @POST
+    @Consumes("application/json")
+    @Produces("text/plain")
+    public String insere(Disciplina disciplina) {    	
+       return this.disciplinaBean.insere(disciplina);
+    }
+    
+    @PUT
 	@Consumes("application/json")
 	@Produces("text/plain")
-	public String insere(Disciplina disciplina) {
-		return this.disciplinaBean.insere(disciplina);
+	public String altera(Disciplina disciplina) {
+    	return this.disciplinaBean.altera(disciplina);
 	}
-	
-	@PUT
-	@Consumes("application/json")
-	@Produces("text/plain")
-	public String alterar(Disciplina disciplina) {
-		return this.disciplinaBean.altera(disciplina);
-		
-	}
-
-	@Path("{id}")
+    
+    @Path("{id}")
 	@DELETE
 	@Produces("text/plain")
 	public String remove(@PathParam("id") Long id) {
-		
-		return this.disciplinaBean.remove(id);
-		
+	    return this.disciplinaBean.remove(id);
 	}
 
-	
-	
-
-
-
 }
-
-
-

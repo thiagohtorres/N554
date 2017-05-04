@@ -1,16 +1,18 @@
 package br.unifor.entity;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public class Aluno implements Serializable {
-	private static final long serialVersionUID = 1L;
+@Entity
+public class Aluno {
 	
-	private Long id;
-	private String matricula;
-	private String nome;
-	private Turma turma;
-	
-	
+	@Id
+	@GeneratedValue
+	Long id;
+	String nome;
+	String matricula;
+	//Turma turma;
 	
 	public Long getId() {
 		return id;
@@ -18,26 +20,23 @@ public class Aluno implements Serializable {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getMatricula() {
-		return matricula;
-	}
-	public void setMatricula(String matricula) {
-		this.matricula = matricula;
-	}
 	public String getNome() {
 		return nome;
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Turma getTurma() {
-		return turma;
+	public String getMatricula() {
+		return matricula;
 	}
-	public void setTurma(Turma turma) {
-		this.turma = turma;
+	public void setMatricula(String matricula) {
+		this.matricula = matricula;
 	}
-	
-	
-	
+	//public Turma getTurma() {
+		//return turma;
+	//}
+	//public void setTurma(Turma turma) {
+		//this.turma = turma;
+	//}
 
 }

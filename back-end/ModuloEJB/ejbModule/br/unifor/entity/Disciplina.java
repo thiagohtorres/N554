@@ -2,16 +2,19 @@ package br.unifor.entity;
 
 import java.io.Serializable;
 
-public class Disciplina implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
+@Entity
+public class Disciplina implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue
 	private Long id;
 	private String codigo;
 	private String nome;
-	
-	
-	
 	
 	public Long getId() {
 		return id;
@@ -31,6 +34,6 @@ public class Disciplina implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+
 
 }

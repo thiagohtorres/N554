@@ -1,17 +1,17 @@
 package br.unifor.entity;
 
-import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-
-
-public class Turma implements Serializable{
-	private static final long serialVersionUID = 1L;
+@Entity
+public class Turma {
 	
-	private Long id;
-	private String semestre;
-	private Disciplina disciplina;
-	
-	
+	//Disciplina disciplina;
+	String semestre;
+	@Id
+	@GeneratedValue
+	Long id;
 	
 	public Long getId() {
 		return id;
@@ -19,21 +19,17 @@ public class Turma implements Serializable{
 	public void setId(Long id) {
 		this.id = id;
 	}
-	
+	//public Disciplina getDisciplina() {
+		//return disciplina;
+	//}
+	//public void setDisciplina(Disciplina disciplina) {
+		//this.disciplina = disciplina;
+	//}
 	public String getSemestre() {
 		return semestre;
 	}
 	public void setSemestre(String semestre) {
 		this.semestre = semestre;
 	}
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
-	}
-	
-	
-	
 
 }
