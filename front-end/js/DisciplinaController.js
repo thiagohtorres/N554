@@ -2,6 +2,7 @@ app.controller('DisciplinaController',function($scope, $http)
 {
 	//$scope.disciplina={};
     $scope.listaDisciplinas = [];
+	$scope.listaTurmas = [];
 	
 
 	$scope.remover = function(disciplina)	{
@@ -55,18 +56,34 @@ app.controller('DisciplinaController',function($scope, $http)
 			);
 
 	}
+	
 
 	$scope.busca = function(disciplina){
 
 		$http.get('http://localhost:8080/ExemploRest/rest/disciplinas/'+ disciplina.id).success(
 			function(dados){
 				$scope.disciplina = dados;
+				
 			}
 
 			);
 
+			$http.get('http://localhost:8080/ExemploRest/rest/turmas/disc/'+disciplina.id).success(
 
-	}
+    		function(dados){
+      			$scope.listaTurmas = dados;
+
+    		}
+
+    		);
+	}		
+
+  		
+
+	
+
+
+	
 
 	
 
@@ -88,6 +105,7 @@ app.controller('DisciplinaController',function($scope, $http)
 	}
 
 	$scope.listar();
+	
 
 
 

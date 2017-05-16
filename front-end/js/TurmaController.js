@@ -4,6 +4,7 @@ app.controller('TurmaController', function($scope,$http){
 
  $scope.turma = {}; 
  $scope.turma.disciplina = {};
+ $scope.listaAlunos = [];
 
 $scope.listaSemestres = [  
   {valor: "2016.1"},
@@ -85,6 +86,14 @@ $scope.buscar = function(turma){
     }
 
     );
+    $http.get('http://localhost:8080/ExemploRest/rest/alunos/turm/'+turma.id).success(
+
+    		function(dados){
+      			$scope.listaAlunos = dados;
+
+    		}
+
+    		);
 
 }
 

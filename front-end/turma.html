@@ -69,6 +69,32 @@
 		</tbody>
 	</table>
 	</div>
+	</div>
+	<div class-"row">
+
+		<div class="col-md-4">
+
+	 <table ng-hide="listaAlunos.length == 0" class="table table-condensed">
+		<thead>
+			
+			<tr>
+				<th>Matricula</th>	
+				<th>Nome</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="aluno in listaAlunos">			
+				<td>					
+					{{aluno.matricula}}
+				</td>
+				<td>					
+					{{aluno.nome}}
+				</td>	
+				
+				
+			</tr>
+		</tbody>
+	</table>
 	</div> 
 	</div>	
 	
