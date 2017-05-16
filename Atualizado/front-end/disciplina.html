@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="pt" >
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro Disciplina</title>		
+</head>
+
+<div class="container">
+
+  <div class="row">
+
+  <div class="col-md-4">
+	
+	<form name="formDisciplinas">
+
+	<div class="form-group">
+
+	<label>Código</label>
+	<input type="text" name="codigo" ng-model="disciplina.codigo" class="form-control">
+
+	</div>
+
+
+   <div class="form-group">
+
+	<label>Nome</label>
+	<input type="text" name="nome" ng-model="disciplina.nome" class="form-control">
+
+   </div>	
+
+	<button ng-click="gravar()" class="btn btn-primary">Gravar</button>
+	<button ng-click="alterar()" class="btn btn-default">Alterar</button>
+
+	</form>
+	</div>
+
+	<div class="col-md-1"></div>	
+
+	<div class="col-md-4">
+
+	 <table ng-hide="listaDisciplinas.length == 0" class="table table-condensed">
+		<thead>
+			<tr>				
+				<th>Código</th>	
+				<th>Nome</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="disciplina in listaDisciplinas">			
+				<td>					
+					<input type="text" readonly="true" size="5" ng-model="disciplina.codigo">
+				</td>	
+				<td>
+					<input type="text" readonly="true" size="30" ng-model="disciplina.nome" >
+				</td>
+				<td>					
+					<button ng-click="remover(disciplina)" class="btn btn-xs btn-danger">
+						<span class="glyphicon glyphicon-remove"></span>
+					</button>					
+				</td>
+				<td>
+					<button ng-click="busca(disciplina)" class="btn btn-xs btn-default">
+						<span class="glyphicon glyphicon-refresh"></span>
+					</button>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	
+	</div>
+
+	</div>
+
+	<div class-"row">
+
+		<div class="col-md-4">
+
+	 <table ng-hide="listaTurmas.length == 0" class="table table-condensed">
+		<thead>
+			<tr>				
+				<th>Semestre</th>	
+				<th>Disciplina</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="turma in listaTurmas">			
+				<td>					
+					{{turma.semestre}}
+				</td>	
+				<td>
+					{{turma.disciplina.codigo}}-{{turma.disciplina.nome}}
+				</td>
+				
+			</tr>
+		</tbody>
+	</table>
+	</div>
+
+	</div>
+
+	</div>
+</body>
+
+    
+
+
+
+</html>
+

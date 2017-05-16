@@ -7,7 +7,9 @@
    <persistence-unit name="ExemploPU">
        <provider>org.hibernate.ejb.HibernatePersistence</provider>
        <jta-data-source>java:/TreinamentoDS</jta-data-source>           
-  <class>br.unifor.entity.Disciplina</class>
+       <class>br.unifor.entity.Disciplina</class>
+       <class>br.unifor.entity.Turma</class>
+       <class>br.unifor.entity.Aluno</class>
        <properties>
            <property name="hibernate.hbm2ddl.auto" value="update" />
            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
