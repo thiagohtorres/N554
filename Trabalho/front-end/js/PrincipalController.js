@@ -2,42 +2,50 @@ app.controller('PrincipalController',function($scope){
 $scope.listaProdutos = [];
 
 	
-$scope.listaCategorias = [
-{categoria:" ",nome:"Todos"},
-{categoria:"hardware",nome: "Hardware"},
-{categoria:"software",nome: "Software"},
-{categoria:"periferico",nome: "Periferico"}
+$scope.listaCategorias = function(){
+	$http.get('http://localhost:8080/ExemploRest/rest/categoria').success(
 
-];
+			function(dados){
+				$scope.listaCategoria = dados;
+
+			}
+
+
+			);
+}
 
 
 
 $scope.adicionar = function(produto){
-	alert("Foi adicionado "+produto.nome+" ao carrinho com sucesso!");
+
+	$scope.produto.categoria = JSON.parse($scope.produto.categoria);
+		$http.post('http://localhost:8080/ExemploRest/rest/produto/carrinho', $scope.produto).success(
+			function(dados){
+				$scope.produto = {};
+				$scope.listar();
+				alert(dados);
+			}
+
+			);	
 }
 
 $scope.listarProdutos = function(){
-  $scope.listaProdutos = [
 
-{categoria: "Hardware ",codigo:"001",nome:'SSD SanDisk',valor:399.99},
-{categoria: "Hardware ",codigo:'145',nome:'Placa de Vídeo Gtx 1080Ti',valor:2999.90},
-{categoria: "Hardware ",codigo:"235",nome:'Processador i5 7600k',valor:1499.90},
-{categoria: "Hardware ",codigo:"876",nome:'Memória DDR4 16GB ',valor:299.90},
-{categoria: "Software ",codigo:"100",nome:'anti-virus',valor:29.90},
-{categoria: "Software ",codigo:"951",nome:'S.O',valor:290.90},
-{categoria: "Periferico ",codigo:"355",nome:'Teclado',valor:39.90},
-{categoria: "Periferico ",codigo:"777",nome:'Mouse',valor:390.90},
-{categoria: "Periferico ",codigo:"223",nome:'Web Cam',valor:390.90}
-];
+$http.get('http://localhost:8080/ExemploRest/rest/produto').success(
+			function(dados){
+				$scope.listaProdutos = dados;
+			}
+
+
+			);
+ 
 
 }
 
 
 $scope.listarProdutos();
+$scope.listaCategoria();
 
-$scope.teste = function(){
-	alert($scope.produto.categoria);
 
-}
 
 })

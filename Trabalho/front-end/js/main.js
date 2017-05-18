@@ -10,5 +10,9 @@ app.config(['$routeProvider',
       when('/home', {
         templateUrl: 'principal.html',
         controller: 'PrincipalController'
+      }).
+      when('/produto', {
+        templateUrl: 'produto.html',
+        controller: 'ProdutoController'
       });
 }]);

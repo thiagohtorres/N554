@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt">
+<head>
+	<meta charset="UTF-8">
+	<title>Cadastro Produto</title>		
+</head>
+<body>
+
+<form name="formProduto">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-md-4"></div>
+<div class="col-md-4">
+
+<div class="form-group">
+<label>Código</label>
+<input type="text" name="codigo" ng-model="produto.codigo" class="form-control">
+</div>
+
+<div class="form-group">
+<label>Nome</label>
+<input type="text" name="nome" ng-model="produto.nome" class="form-control">
+</div>
+
+<div class="form-group">
+<label>Categoria</label>
+
+<select name="categoria" ng-model="produto.categoria" class="form-control">
+	<option ng-repeat="categoria in listaCategorias" value="{{categoria}}">{{categoria.nome}}</option>
+</select>
+</div>
+
+<div class="form-group">
+<label>Valor</label>
+<input type="text" name="valor" ng-model="produto.valor" class="form-control">
+</div>
+
+<button ng-click="gravar()" class="btn btn-primary">Gravar</button>
+
+</div>
+
+</form>
+
+<div class="col-md-4"></div>
+
+</div>
+
+</div>
+
+</body>
+
+
+
+</html>
