@@ -25,8 +25,7 @@ public class AlunoDAO {
 	}
 
 	public Collection<Aluno> lista() {
-		return manager.createQuery("SELECT a FROM Aluno a")
-				.getResultList();
+		return manager.createQuery("SELECT a FROM Aluno a").getResultList();
 	}
 
 	public Aluno busca(Long id) {
@@ -51,7 +50,7 @@ public class AlunoDAO {
 
             alunoManaged.setNome(aluno.getNome());
             alunoManaged.setMatricula(aluno.getMatricula());
-       //     alunoManaged.setTurma(aluno.getTurma());
+            alunoManaged.setTurma(aluno.getTurma());
                        
             return "Aluno " + aluno.getNome()+ " atualizado";
         } catch (PersistenceException e) {
