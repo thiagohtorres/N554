@@ -14,8 +14,8 @@
 	<div class="col-md-4">
 	<form name="formBusca">
 		<label>Selecione por categoria</label>
-		<select  name="categoria" ng-model="produtoCategoria" class="form-control">  			
-		<option ng-repeat="categoria in listaCategorias" value="{{categoria.categoria}}">{{categoria.nome}}</option>		
+		<select  name="categoria" ng-model="categoria" class="form-control">  			
+		<option ng-repeat="categoria in listaCategorias" value="{{categoria.nome}}">{{categoria.nome}}</option>		
 	</select>
 	
 
@@ -30,7 +30,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="produto in listaProdutos | filter: produtoCategoria">			
+			<tr ng-repeat="produto in listaProdutos | filter:categoria">			
 				<td>					
 					{{produto.codigo}}
 				</td>	

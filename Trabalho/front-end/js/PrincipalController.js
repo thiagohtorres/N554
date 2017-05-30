@@ -1,35 +1,31 @@
-app.controller('PrincipalController',function($scope){
+app.controller('PrincipalController',function($scope,$http){
 $scope.listaProdutos = [];
 
+	$scope.produto = {};
+	$scope.produto.categoria = {};
+
+$scope.listaCategorias = [
+	{nome:"Hardware"},
+	{nome:"Software"},
+	{nome:"Periféricos"}
+];
+
+$scope.adicionar = function(produto){	
 	
-$scope.listaCategorias = function(){
-	$http.get('http://localhost:8080/ExemploRest/rest/categoria').success(
-
+	
+		$http.get('http://localhost:8080/ExemploRest/rest/produto/carrinho/'+produto.id).success(
 			function(dados){
-				$scope.listaCategoria = dados;
-
-			}
-
-
-			);
-}
-
-
-
-$scope.adicionar = function(produto){
-
-	$scope.produto.categoria = JSON.parse($scope.produto.categoria);
-		$http.post('http://localhost:8080/ExemploRest/rest/produto/carrinho', $scope.produto).success(
-			function(dados){
+			
 				$scope.produto = {};
 				$scope.listar();
-				alert(dados);
+					alert(dados);
+				
 			}
 
 			);	
 }
 
-$scope.listarProdutos = function(){
+$scope.listar = function(){
 
 $http.get('http://localhost:8080/ExemploRest/rest/produto').success(
 			function(dados){
@@ -43,8 +39,8 @@ $http.get('http://localhost:8080/ExemploRest/rest/produto').success(
 }
 
 
-$scope.listarProdutos();
-$scope.listaCategoria();
+$scope.listar();
+
 
 
 
