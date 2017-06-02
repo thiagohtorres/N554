@@ -25,8 +25,14 @@ $scope.remover = function(produto){
 }
 
 $scope.comprar = function(){
-	$scope.listaProdutos = [];
-	alert("Obrigado pela Compra!");
+	$http.get('http://localhost:8080/ExemploRest/rest/produto/carrinho/compra').success(
+			function(dados){
+				$scope.listarProdutos();
+				alert(dados);
+			}
+
+
+			);
 }
 
 

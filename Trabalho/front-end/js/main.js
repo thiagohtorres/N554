@@ -11,6 +11,10 @@ app.config(['$routeProvider',
         templateUrl: 'principal.html',
         controller: 'PrincipalController'
       }).
+      when('/categoria', {
+        templateUrl: 'cadastroCategoria.html',
+        controller: 'CategoriaController'
+      }).
       when('/produto', {
         templateUrl: 'produto.html',
         controller: 'ProdutoController'

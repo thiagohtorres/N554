@@ -3,12 +3,8 @@ $scope.listaProdutos = [];
 
 	$scope.produto = {};
 	$scope.produto.categoria = {};
+	$scope.listaCategoria = [];
 
-$scope.listaCategorias = [
-	{nome:"Hardware"},
-	{nome:"Software"},
-	{nome:"Periféricos"}
-];
 
 $scope.adicionar = function(produto){	
 	
@@ -34,11 +30,24 @@ $http.get('http://localhost:8080/ExemploRest/rest/produto').success(
 
 
 			);
- 
+
+}
+
+$scope.listarCategorias = function(){
+
+$http.get('http://localhost:8080/ExemploRest/rest/categoria').success(
+			function(dados){
+				$scope.listaCategoria = dados;
+			}
+
+
+			);
 
 }
 
 
+
+$scope.listarCategorias();
 $scope.listar();
 
 
