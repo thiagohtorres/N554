@@ -57,5 +57,12 @@ public class ProdutoResource {
 	public String remove(@PathParam("id") Long id) {
 		return this.produtoBean.remover(id);
 	}
+	
+	@Path("carrinho/compra")
+	@GET
+	@Produces("text/plain")
+	public String compra() {
+		return this.produtoBean.compraConcluida();
+	}
 
 }

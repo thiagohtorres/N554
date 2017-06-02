@@ -17,7 +17,7 @@ public class Produto implements Serializable {
 	private Long id;
 	private String codigo;
 	private String nome;
-	private String categoria;
+	private Categoria categoria;
 	private float valor;
 	
 	
@@ -43,12 +43,12 @@ public class Produto implements Serializable {
 	}
 	public void setNome(String nome) {
 		this.nome = nome;
-	}
+	}	
 	
-	public String getCategoria() {
+	public Categoria getCategoria() {
 		return categoria;
 	}
-	public void setCategoria(String categoria) {
+	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 	public float getValor() {

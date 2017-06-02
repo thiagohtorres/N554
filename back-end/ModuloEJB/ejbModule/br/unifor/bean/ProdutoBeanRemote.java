@@ -13,5 +13,6 @@ public interface ProdutoBeanRemote {
 	public String addCarrinho(Long id);
 	public Collection<Produto> listarCarrinho();
 	public String remover(Long id);
+	public String compraConcluida();
 
 }

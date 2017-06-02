@@ -42,4 +42,9 @@ public class ProdutoBeanImpl implements ProdutoBeanRemote{
 		return this.produtoDAO.remover(id);
 	}
 
+	@Override
+	public String compraConcluida() {		
+		return this.produtoDAO.compraConcluida();
+	}
+
 }

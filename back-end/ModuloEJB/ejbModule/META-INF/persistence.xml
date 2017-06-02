@@ -11,6 +11,7 @@
        <class>br.unifor.entity.Turma</class>
        <class>br.unifor.entity.Aluno</class>
        <class>br.unifor.entity.Produto</class>
+       <class>br.unifor.entity.Categoria</class>
        <properties>
            <property name="hibernate.hbm2ddl.auto" value="update" />
            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />

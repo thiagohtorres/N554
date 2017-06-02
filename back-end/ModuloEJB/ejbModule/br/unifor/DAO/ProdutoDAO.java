@@ -60,5 +60,11 @@ public class ProdutoDAO {
 		
 		return "Produto removido com sucesso!";
 	}
+	
+	public String compraConcluida(){
+		carrinhoMap.clear();
+		
+		return "Obrigado pela compra!";
+	}
 
 }
